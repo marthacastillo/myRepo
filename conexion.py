@@ -1,0 +1,11 @@
+import psycopg2
+conn= psycopg2.connect("dbname=beeva_test user=martha password=beeva2017")
+cur=conn.cursor()
+cur.execute("CREATE TABLE TEST  (id serial PRIMARY KEY, num integer, data varchar);")
+cur.execute("INSERT INTO TEST (num, data) VALUES (%s, %s)",...(100,"abc'def"))
+cur.execute("SELECT *FROM TEST;")
+cur.fetchone()
+(1,100,"abc def")
+conn.commit()
+cur.close()
+conn.close()
